@@ -39,8 +39,8 @@ typedef struct instruction_s
 
 void err(char *format, ...);
 int isnum(char *i);
-void push(stack_t **new_node);
-void pall(stack_t **stack, unsigned int line_number);
+void push(stack_t **head, int n);
+void pall(stack_t *stack);
 void pop_top(stack_t **stack, unsigned int line_number);
 void print_top(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);

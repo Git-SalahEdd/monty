@@ -9,6 +9,8 @@
 
 int isnum(char *i)
 {
+	if (!i)
+		return (0);
 	while (*i)
 	{
 		if (*i < '0' || *i > '9')
@@ -45,11 +47,11 @@ void err(char *format, ...)
 int main(int ac, char *av[])
 {
 	char *file, *word1, *word2;
-	char *delim = " \t\n\r", *line = NULL;
+	char *delim = " \t\n\r";
+	char line[1024];
 	FILE *bytecodes;
-	size_t len = 0;
-	ssize_t read;
 	int line_num = 1, n;
+	stack_t *head = NULL;
 
 	if (ac != 2)
 		err("USAGE: monty file\n");
@@ -59,20 +61,24 @@ int main(int ac, char *av[])
 	if (!bytecodes)
 		err("Error: Can't open file %s\n", file);
 
-	while ((read = getline(&line, &len, bytecodes)) != -1)
+	while (fgets(line, sizeof(line), bytecodes))
 	{
 		word1 = strtok(line, delim);
-		word2 = strtok(NULL, delim);
-		if (!isnum(word2))
-			err("L%d: usage: push integer\n", line_num);
-		n = atoi(word2);
+		if (!word1)
+			continue;
+
 		if (strcmp(word1, "push") == 0)
-			push(n);
+		{
+			word2 = strtok(NULL, delim);
+			if (!isnum(word2))
+				err("L%d: usage: push integer\n", line_num);
+			n = atoi(word2);
+			push(&head, n);
+		}
 		else if (strcmp(word1, "pall") == 0)
-			pall();
+			pall(head);
 		else
 			err("L%d: unknown instruction %s\n", line_num, word1);
-		free(line);
 		line_num++;
 	}
 	fclose(bytecodes);
