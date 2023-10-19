@@ -1,11 +1,11 @@
 #include "monty.h"
 
 /**
- *div - divides the second top element of the stack by the top element of the stack.
+ *_div - divides the second top element of the stack by the top element of the stack.
  *@line_number: line number for opcode
  */
 
-void div(stack_t **stack, unsigned int line_number)
+void _div(stack_t **stack, unsigned int line_number)
 {
     if (!stack || !*stack)
     {
@@ -18,7 +18,7 @@ void div(stack_t **stack, unsigned int line_number)
     else
     {
         int result = (*stack)->prev->n / (*stack)->n;
-        pop(stack, line_number);
+        pop_top(stack, line_number);
         (*stack)->n = result;
     }
 }

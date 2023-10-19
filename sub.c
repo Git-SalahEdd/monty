@@ -19,7 +19,7 @@ void sub(stack_t **stack, unsigned int line_number)
     else
     {
         int result = (*stack)->n - (*stack)->next->n;
-        pop(stack, line_number);
+        pop_top(stack, line_number);
         (*stack)->n = result;
     }
 }
