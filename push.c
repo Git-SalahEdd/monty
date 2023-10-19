@@ -3,10 +3,9 @@
 /**
  * push - Adds a node to the stack.
  * @new_node: Pointer to the new node.
- * @ln: Interger representing the line number of of the opcode.
  */
 
-void push (stack_t **new_node)
+void push(stack_t **new_node)
 {
 	stack_t *tmp;
 
@@ -25,7 +24,7 @@ void push (stack_t **new_node)
 
 
 /**
- * print_stack - Adds a node to the stack.
+ * pall - Adds a node to the stack.
  * @stack: Pointer to a pointer pointing to top node of the stack.
  * @line_number: line number of  the opcode.
  */
@@ -56,7 +55,7 @@ void pop_top(stack_t **stack, unsigned int line_number)
 	stack_t *tmp;
 
 	if (stack == NULL || *stack == NULL)
-		  /** error function with number of line with the error*/
+		err("L%d : empty stack", line_number);
 
 	tmp = *stack;
 	*stack = tmp->next;
@@ -74,6 +73,6 @@ void pop_top(stack_t **stack, unsigned int line_number)
 void print_top(stack_t **stack, unsigned int line_number)
 {
 	if (stack == NULL || *stack == NULL)
-		 /** error function with number of line with the error*/
+		err("L%d : empty stack", line_number);
 	printf("%d\n", (*stack)->n);
 }
