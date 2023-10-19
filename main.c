@@ -82,5 +82,6 @@ int main(int ac, char *av[])
 		line_num++;
 	}
 	fclose(bytecodes);
+	free_stack(head);
 	return (EXIT_SUCCESS);
 }
