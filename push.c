@@ -6,7 +6,7 @@
  * @ln: Interger representing the line number of of the opcode.
  */
 
-void push (stack_t **new_node)
+void push(stack_t **new_node)
 {
 	stack_t *tmp;
 
