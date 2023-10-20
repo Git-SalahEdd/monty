@@ -2,13 +2,28 @@
 
 /**
  * switch_opcodes - switch for opcodes
- * @line: the line to get the instruction from
+ * @head: the head of the linked list
  * @word: the first word
  * @line_num: line number being operated on
  */
 
-void switch_opcodes(char *line, char *word, int line_num)
+void switch_opcodes(stack_t **head, char *word, int line_num)
 {
+	int n;
+	char *num;
+
+	if (strcmp(word, "push") == 0)
+	{
+		num = strtok(NULL, " \t\n\r");
+		if (!isnum(num))
+			err("L%d: usage: push integer\n", line_num);
+		n = atoi(num);
+		push(head, n);
+	}
+	else if (strcmp(word, "pall") == 0)
+		pall(*head);
+	else
+		err("L%d: unknown instruction %s\n", line_num, word);
 }
 
 /**
@@ -60,8 +75,7 @@ void err(char *format, ...)
 
 int main(int ac, char *av[])
 {
-	char *file, *word1, *word2;
-	char *delim = " \t\n\r";
+	char *file, *word1;
 	char line[1024];
 	FILE *bytecodes;
 	int line_num = 1;
@@ -77,13 +91,13 @@ int main(int ac, char *av[])
 
 	while (fgets(line, sizeof(line), bytecodes))
 	{
-		word1 = strtok(line, delim);
+		word1 = strtok(line, " \n\t\r");
 		if (!word1)
 		{
 			line_num++;
 			continue;
 		}
-		switch_opcodes(&line, word1, line_num);
+		switch_opcodes(&head, word1, line_num);
 /*		if (strcmp(word1, "push") == 0)
 		{
 			word2 = strtok(NULL, delim);

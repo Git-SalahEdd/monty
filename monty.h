@@ -46,5 +46,6 @@ void print_top(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void _div(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *head);
+void switch_opcodes(stack_t **head, char *word, int line_num);
 
 #endif
