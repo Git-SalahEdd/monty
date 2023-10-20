@@ -11,6 +11,8 @@ int isnum(char *i)
 {
 	if (!i)
 		return (0);
+	if (*i == '-')
+		i++;
 	while (*i)
 	{
 		if (*i < '0' || *i > '9')
@@ -66,7 +68,10 @@ int main(int ac, char *av[])
 	{
 		word1 = strtok(line, delim);
 		if (!word1)
+		{
+			line_num++;
 			continue;
+		}
 
 		if (strcmp(word1, "push") == 0)
 		{
