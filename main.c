@@ -1,6 +1,17 @@
 #include "monty.h"
 
 /**
+ * switch_opcodes - switch for opcodes
+ * @line: the line to get the instruction from
+ * @word: the first word
+ * @line_num: line number being operated on
+ */
+
+void switch_opcodes(char *line, char *word, int line_num)
+{
+}
+
+/**
  * isnum - checks if a string is a number
  * @i: string to check
  *
@@ -53,7 +64,7 @@ int main(int ac, char *av[])
 	char *delim = " \t\n\r";
 	char line[1024];
 	FILE *bytecodes;
-	int line_num = 1, n;
+	int line_num = 1;
 	stack_t *head = NULL;
 
 	if (ac != 2)
@@ -72,7 +83,8 @@ int main(int ac, char *av[])
 			line_num++;
 			continue;
 		}
-		if (strcmp(word1, "push") == 0)
+		switch_opcodes(&line, word1, line_num);
+/*		if (strcmp(word1, "push") == 0)
 		{
 			word2 = strtok(NULL, delim);
 			if (!isnum(word2))
@@ -83,7 +95,7 @@ int main(int ac, char *av[])
 		else if (strcmp(word1, "pall") == 0)
 			pall(head);
 		else
-			err("L%d: unknown instruction %s\n", line_num, word1);
+			err("L%d: unknown instruction %s\n", line_num, word1);*/
 		line_num++;
 	}
 	fclose(bytecodes);
