@@ -72,7 +72,6 @@ int main(int ac, char *av[])
 			line_num++;
 			continue;
 		}
-
 		if (strcmp(word1, "push") == 0)
 		{
 			word2 = strtok(NULL, delim);
