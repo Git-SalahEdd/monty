@@ -22,7 +22,7 @@ int isnum(char *i)
 
 /**
  * err - prints error to the stderr
- * @str: string to print
+ * @format: string to print
  *
  * Return: void
  */
@@ -30,6 +30,7 @@ int isnum(char *i)
 void err(char *format, ...)
 {
 	va_list argp;
+
 	va_start(argp, *format);
 	vfprintf(stderr, format, argp);
 	va_end(argp);

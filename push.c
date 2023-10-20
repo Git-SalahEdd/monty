@@ -2,7 +2,8 @@
 
 /**
  * push - Adds a node to the stack.
- * @new_node: Pointer to the new node.
+ * @head: Pointer to the new node.
+ * @n: number
  */
 
 void push(stack_t **head, int n)
@@ -33,7 +34,6 @@ void push(stack_t **head, int n)
 /**
  * pall - Adds a node to the stack.
  * @stack: Pointer to a pointer pointing to top node of the stack.
- * @line_number: line number of  the opcode.
  */
 
 void pall(stack_t *stack)
