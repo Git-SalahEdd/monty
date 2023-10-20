@@ -1,6 +1,25 @@
 #include "monty.h"
 
 /**
+ * num - returns the number
+ * @cmd: command it's being called from
+ * @line_num: line number being operated on
+ *
+ * Return: int or exit
+ */
+
+int num(char *msg, int line_num)
+{
+	char *str;
+	int n;
+
+	str = strtok(NULL, " \t\n\r");
+	if (!isnum(str))
+		err("L%d: %s\n", line_num, msg);
+	n = atoi(str);
+	return (n);
+}
+/**
  * switch_opcodes - switch for opcodes
  * @head: the head of the linked list
  * @word: the first word
@@ -10,14 +29,10 @@
 void switch_opcodes(stack_t **head, char *word, int line_num)
 {
 	int n;
-	char *num;
 
 	if (strcmp(word, "push") == 0)
 	{
-		num = strtok(NULL, " \t\n\r");
-		if (!isnum(num))
-			err("L%d: usage: push integer\n", line_num);
-		n = atoi(num);
+		n = num("usage: push integer", line_num);
 		push(head, n);
 	}
 	else if (strcmp(word, "pall") == 0)
