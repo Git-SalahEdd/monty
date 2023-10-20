@@ -18,12 +18,12 @@ void sub(stack_t **stack, unsigned int line_number)
 	{
 		err("L%d: can't sub, stack too short", line_number);
 		exit(EXIT_FAILURE);
+	}
+	else
 	{
-		else
-		{
 			int result = (*stack)->n - (*stack)->next->n;
 
 			pop_top(stack, line_number);
 			(*stack)->n = result;
-		}
 	}
+}
