@@ -2,7 +2,7 @@
 
 /**
  * num - returns the number
- * @cmd: command it's being called from
+ * @msg: command it's being called from
  * @line_num: line number being operated on
  *
  * Return: int or exit
