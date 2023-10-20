@@ -98,18 +98,6 @@ int main(int ac, char *av[])
 			continue;
 		}
 		switch_opcodes(&head, word1, line_num);
-/*		if (strcmp(word1, "push") == 0)
-		{
-			word2 = strtok(NULL, delim);
-			if (!isnum(word2))
-				err("L%d: usage: push integer\n", line_num);
-			n = atoi(word2);
-			push(&head, n);
-		}
-		else if (strcmp(word1, "pall") == 0)
-			pall(head);
-		else
-			err("L%d: unknown instruction %s\n", line_num, word1);*/
 		line_num++;
 	}
 	fclose(bytecodes);
