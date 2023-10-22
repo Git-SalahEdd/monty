@@ -76,6 +76,6 @@ void pop_top(stack_t **stack, unsigned int line_number)
 void pint(stack_t **stack, unsigned int line_number)
 {
 	if (stack == NULL || *stack == NULL)
-		err("L%d : can't pint, stack empty\n", line_number);
+		err("L%d: can't pint, stack empty\n", line_number);
 	printf("%d\n", (*stack)->n);
 }
