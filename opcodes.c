@@ -89,7 +89,8 @@ void pint(stack_t **stack, unsigned int line_number)
 void swap(stack_t **head, unsigned int line_num)
 {
 	int tmp;
-	if (!head || !(*head)->next)
+
+	if (!head || !(*head) || !(*head)->next)
 		err("L%d: can't swap, stack too short\n", line_num);
 	tmp = (*head)->n;
 	(*head)->n = (*head)->next->n;
