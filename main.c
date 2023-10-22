@@ -8,7 +8,7 @@
  * Return: int or exit
  */
 
-int num(char *msg, int line_num)
+int num(char *msg, unsigned int line_num)
 {
 	char *str;
 	int n;
@@ -26,7 +26,7 @@ int num(char *msg, int line_num)
  * @line_num: line number being operated on
  */
 
-void switch_opcodes(stack_t **head, char *word, int line_num)
+void switch_opcodes(stack_t **head, char *word, unsigned int line_num)
 {
 	int n;
 
@@ -35,6 +35,8 @@ void switch_opcodes(stack_t **head, char *word, int line_num)
 		n = num("usage: push integer", line_num);
 		push(head, n);
 	}
+	else if (strcmp(word, "pint") == 0)
+		pint(head, line_num);
 	else if (strcmp(word, "pall") == 0)
 		pall(*head);
 	else
@@ -93,7 +95,7 @@ int main(int ac, char *av[])
 	char *file, *word1;
 	char line[1024];
 	FILE *bytecodes;
-	int line_num = 1;
+	unsigned int line_num = 1;
 	stack_t *head = NULL;
 
 	if (ac != 2)

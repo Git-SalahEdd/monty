@@ -42,11 +42,11 @@ int isnum(char *i);
 void push(stack_t **head, int n);
 void pall(stack_t *stack);
 void pop_top(stack_t **stack, unsigned int line_number);
-void print_top(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void _div(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *head);
-void switch_opcodes(stack_t **head, char *word, int line_num);
-int num(char *msg, int line_num);
+void switch_opcodes(stack_t **head, char *word, unsigned int line_num);
+int num(char *msg, unsigned int line_num);
 
 #endif

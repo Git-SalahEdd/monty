@@ -68,14 +68,14 @@ void pop_top(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * print_top - Prints the top node of the stack.
+ * pint - Prints the top node of the stack.
  * @stack: Pointer to a pointer pointing to top node of the stack.
  * @line_number: Interger representing the line number of of the opcode.
  */
 
-void print_top(stack_t **stack, unsigned int line_number)
+void pint(stack_t **stack, unsigned int line_number)
 {
 	if (stack == NULL || *stack == NULL)
-		err("L%d : empty stack", line_number);
+		err("L%d : can't pint, stack empty\n", line_number);
 	printf("%d\n", (*stack)->n);
 }
