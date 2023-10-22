@@ -41,6 +41,8 @@ void switch_opcodes(stack_t **head, char *word, unsigned int line_num)
 		pop(head, line_num);
 	else if (strcmp(word, "pall") == 0)
 		pall(*head);
+	else if (strcmp(word, "swap") == 0)
+		swap(head, line_num);
 	else
 		err("L%d: unknown instruction %s\n", line_num, word);
 }

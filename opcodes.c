@@ -79,3 +79,19 @@ void pint(stack_t **stack, unsigned int line_number)
 		err("L%d: can't pint, stack empty\n", line_number);
 	printf("%d\n", (*stack)->n);
 }
+
+/**
+ * swap - swaps the top 2 elements on the stack
+ * @head: head pointer
+ * @line_num: line number being operated on
+ */
+
+void swap(stack_t **head, unsigned int line_num)
+{
+	int tmp;
+	if (!head || !(*head)->next)
+		err("L%d: can't swap, stack too short\n", line_num);
+	tmp = (*head)->n;
+	(*head)->n = (*head)->next->n;
+	(*head)->next->n = tmp;
+}
