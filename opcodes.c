@@ -53,12 +53,12 @@ void pall(stack_t *stack)
  * @line_number: Interger representing the line number of of the opcode.
  */
 
-void pop_top(stack_t **stack, unsigned int line_number)
+void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp;
 
 	if (stack == NULL || *stack == NULL)
-		err("L%d : empty stack", line_number);
+		err("L%d: can't pop an empty stack", line_number);
 
 	tmp = *stack;
 	*stack = tmp->next;

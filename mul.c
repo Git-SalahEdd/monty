@@ -23,7 +23,7 @@ void mul(stack_t **stack, unsigned int line_number)
 	{
 		int result = (*stack)->prev->n * (*stack)->n;
 
-		pop_top(stack, line_number);
+		pop(stack, line_number);
 		(*stack)->n = result;
 	}
 }

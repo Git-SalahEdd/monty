@@ -37,6 +37,8 @@ void switch_opcodes(stack_t **head, char *word, unsigned int line_num)
 	}
 	else if (strcmp(word, "pint") == 0)
 		pint(head, line_num);
+	else if (strcmp(word, "pop") == 0)
+		pop(head, line_num);
 	else if (strcmp(word, "pall") == 0)
 		pall(*head);
 	else
