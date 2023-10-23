@@ -45,7 +45,8 @@ void switch_opcodes(stack_t **head, char *word, unsigned int line_num)
 		swap(head, line_num);
 	else if (strcmp(word, "add") == 0)
 		add(head, line_num);
-	else if (strcmp(word, "nop") == 0) {}
+	else if (strcmp(word, "nop") == 0)
+		; /* do nothing */
 	else if (strcmp(word, "sub") == 0)
 		sub(head, line_num);
 	else if (strcmp(word, "div") == 0)
