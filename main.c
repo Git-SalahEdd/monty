@@ -55,6 +55,8 @@ void switch_opcodes(stack_t **head, char *word, unsigned int line_num)
 		mul(head, line_num);
 	else if (strcmp(word, "mod") == 0)
 		mod(head, line_num);
+	else if (strcmp(word, "pchar") == 0)
+		pchar(head, line_num);
 	else
 		err("L%d: unknown instruction %s\n", line_num, word);
 }
