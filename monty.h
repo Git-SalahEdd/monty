@@ -50,5 +50,6 @@ void switch_opcodes(stack_t **head, char *word, unsigned int line_num);
 int num(char *msg, unsigned int line_num);
 void swap(stack_t **head, unsigned int line_num);
 void add(stack_t **head, unsigned int line_num);
+void mul(stack_t **head, unsigned int line_num);
 
 #endif

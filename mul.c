@@ -1,29 +1,19 @@
 #include "monty.h"
 
 /**
- * mul - multiplies the second top element
- * of the stack with the top element of the stack.
- * @stack: Pointer to a pointer pointing to top node of the stack.
- * @line_number: line number for opcode
+ * mul - combines the top 2 elements and pops the topmost
+ * @head: stack pointer
+ * @line_num: line number being operated on
  */
 
-void mul(stack_t **stack, unsigned int line_number)
+void mul(stack_t **head, unsigned int line_num)
 {
-	if (!stack || !*stack)
-	{
-		err("L%d : empty stack", line_number);
-		exit(EXIT_FAILURE);
-	}
-	else if (!(*stack)->next)
-	{
-		err("L%d: can't mul, stack too short", line_number);
-		exit(EXIT_FAILURE);
-	}
-	else
-	{
-		int result = (*stack)->prev->n * (*stack)->n;
+	stack_t *top;
 
-		pop(stack, line_number);
-		(*stack)->n = result;
-	}
+	if (!head || !(*head) || !(*head)->next)
+		err("L%d: can't mul, stack too short\n", line_num);
+
+	top = *head;
+	top->next->n *= top->n;
+	pop(head, line_num);
 }
