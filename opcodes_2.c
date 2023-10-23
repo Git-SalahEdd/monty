@@ -14,7 +14,7 @@ void pchar(stack_t **head, unsigned int line_num)
 		err("L%d: can't pchar, stack empty\n", line_num);
 
 	top = *head;
-	if (top->n > 127)
+	if (top->n < 0 || top->n > 127)
 		err("L%d: can't pchar, value out of range\n", line_num);
 	printf("%c\n", (char)top->n);
 }
