@@ -48,6 +48,8 @@ void switch_opcodes(stack_t **head, char *word, unsigned int line_num)
 	else if (strcmp(word, "nop") == 0) {}
 	else if (strcmp(word, "sub") == 0)
 		sub(head, line_num);
+	else if (strcmp(word, "div") == 0)
+		_div(head, line_num);
 	else
 		err("L%d: unknown instruction %s\n", line_num, word);
 }

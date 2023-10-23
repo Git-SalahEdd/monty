@@ -1,29 +1,22 @@
 #include "monty.h"
 
 /**
- *_div - divides the second top element of the stack
- *by the top element of the stack.
- *@stack: pointer poiting to pointer pointing to the stack
- *@line_number: line number for opcode
+ * _div - combines the top 2 elements and pops the topmost
+ * @head: stack pointer
+ * @line_num: line number being operated on
  */
 
-void _div(stack_t **stack, unsigned int line_number)
+void _div(stack_t **head, unsigned int line_num)
 {
-	if (!stack || !*stack)
-	{
-		err("L%d : empty stack", line_number);
-		exit(EXIT_FAILURE);
-	}
-	else if (!(*stack)->next)
-	{
-		err("L%d: can't div, stack too short", line_number);
-		exit(EXIT_FAILURE);
-	}
-	else
-	{
-		int result = (*stack)->prev->n / (*stack)->n;
+	stack_t *top;
 
-		pop(stack, line_number);
-		(*stack)->n = result;
-	}
+	if (!head || !(*head) || !(*head)->next)
+		err("L%d: can't div, stack too short\n", line_num);
+
+	top = *head;
+	if (top->n == 0)
+		err("L%d: division by zero\n", line_num);
+
+	top->next->n /= top->n;
+	pop(head, line_num);
 }
