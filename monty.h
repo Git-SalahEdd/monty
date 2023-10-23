@@ -54,5 +54,6 @@ void mul(stack_t **head, unsigned int line_num);
 void mod(stack_t **head, unsigned int line_num);
 int is_comment(char *word);
 void pchar(stack_t **head, unsigned int line_num);
+void pstr(stack_t **head);
 
 #endif

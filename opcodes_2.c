@@ -18,3 +18,26 @@ void pchar(stack_t **head, unsigned int line_num)
 		err("L%d: can't pchar, value out of range\n", line_num);
 	printf("%c\n", (char)top->n);
 }
+
+/**
+ * pstr - prints string vallue of stack->n
+ * @head: pointer to stack
+ */
+
+void pstr(stack_t **head)
+{
+	stack_t *top;
+
+	if (!head || !(*head))
+	{/* do nothing */}
+
+	top = *head;
+	while (top)
+	{
+		if (top->n < 1 || top->n > 127)
+			break;
+		printf("%c", (char)top->n);
+		top = top->next;
+	}
+	printf("\n");
+}
