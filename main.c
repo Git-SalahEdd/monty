@@ -54,7 +54,6 @@ void switch_opcodes(stack_t **head, char *word, unsigned int line_num)
 		mul(head, line_num);
 	else if (strcmp(word, "mod") == 0)
 		mod(head, line_num);
-	else if (strcmp(word, "#") == 0) {}
 	else
 		err("L%d: unknown instruction %s\n", line_num, word);
 }
@@ -125,7 +124,7 @@ int main(int ac, char *av[])
 	while (fgets(line, sizeof(line), bytecodes))
 	{
 		word1 = strtok(line, " \n\t\r");
-		if (!word1)
+		if (!word1 || is_comment(word1))
 		{
 			line_num++;
 			continue;
