@@ -12,7 +12,7 @@ void sub(stack_t **stack, unsigned int line_number)
 	stack_t *top;
 
 	if (!stack || !(*stack) || !(*stack)->next)
-		err("L%d: can't sub, stack too short", line_number);
+		err("L%d: can't sub, stack too short\n", line_number);
 
 	top = *stack;
 	top->next->n -= top->n;
