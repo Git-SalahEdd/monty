@@ -56,7 +56,7 @@ void rotr(stack_t **head)
 		return;
 
 	temp = *head;
-	while(temp->next->next)
+	while (temp->next->next)
 		temp = temp->next;
 	first = temp->next;
 	temp->next = NULL;
@@ -65,5 +65,15 @@ void rotr(stack_t **head)
 
 void rotl(stack_t **head)
 {
-	(void) head;
+	stack_t *last;
+	stack_t *temp;
+
+	if (!head || !(*head) || !(*head)->next)
+		return;
+
+	temp = *head;
+	last = temp;
+	while (temp->next)
+		temp = temp->next;
+	temp = last;
 }
