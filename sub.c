@@ -9,21 +9,12 @@
 
 void sub(stack_t **stack, unsigned int line_number)
 {
-	if (!stack || !*stack)
-	{
-		err("L%d : empty stack", line_number);
-		exit(EXIT_FAILURE);
-	}
-	else if (!(*stack)->next)
-	{
-		err("L%d: can't sub, stack too short", line_number);
-		exit(EXIT_FAILURE);
-	}
-	else
-	{
-			int result = (*stack)->n - (*stack)->next->n;
+	stack_t *top;
 
-			pop(stack, line_number);
-			(*stack)->n = result;
-	}
+	if (!stack || !(*stack) || !(*stack)->next)
+		err("L%d: can't sub, stack too short", line_number);
+
+	top = *stack;
+	top->next->n -= top->n;
+	pop(stack, line_number);
 }
