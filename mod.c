@@ -1,29 +1,22 @@
 #include "monty.h"
 
 /**
- *mod - computes the rest of the division of
- *the second top element of the stack by the top element of the stack.
- * @stack: Pointer to a pointer pointing to top node of the stack.
- * @line_number: line number for opcode
+ * mod - mods 2 topmost elements
+ * @head: stack pointer
+ * @line_num: line number being operated on
  */
 
-void mod(stack_t **stack, unsigned int line_number)
+void mod(stack_t **head, unsigned int line_num)
 {
-	if (!stack || !*stack)
-	{
-		err("L%d : empty stack", line_number);
-		exit(EXIT_FAILURE);
-	}
-	else if (!(*stack)->next)
-	{
-		err("L%d: can't mod, stack too short", line_number);
-		exit(EXIT_FAILURE);
-	}
-	else
-	{
-		int result = (*stack)->prev->n % (*stack)->n;
+	stack_t *top;
 
-		pop(stack, line_number);
-		(*stack)->n = result;
-	}
+	if (!head || !(*head) || !(*head)->next)
+		err("L%d: can't mod, stack too short\n", line_num);
+
+	top = *head;
+	if (top->n == 0)
+		err("L%d: division by zero\n", line_num);
+
+	top->next->n %= top->n;
+	pop(head, line_num);
 }
