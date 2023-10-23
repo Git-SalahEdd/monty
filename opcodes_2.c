@@ -41,3 +41,29 @@ void pstr(stack_t **head)
 	}
 	printf("\n");
 }
+
+/**
+ * rotr - moves the last node to the first
+ * @head: pointer to stack
+ */
+
+void rotr(stack_t **head)
+{
+	stack_t *first;
+	stack_t *temp;
+
+	if (!head || !(*head) || !(*head)->next)
+		return;
+
+	temp = *head;
+	while(temp->next->next)
+		temp = temp->next;
+	first = temp->next;
+	temp->next = NULL;
+	push(head, first->n);
+}
+
+void rotl(stack_t **head)
+{
+	(void) head;
+}

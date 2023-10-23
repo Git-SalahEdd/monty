@@ -59,6 +59,10 @@ void switch_opcodes(stack_t **head, char *word, unsigned int line_num)
 		pchar(head, line_num);
 	else if (strcmp(word, "pstr") == 0)
 		pstr(head);
+	else if (strcmp(word, "rotl") == 0)
+		rotl(head);
+	else if (strcmp(word, "rotr") == 0)
+		rotr(head);
 	else
 		err("L%d: unknown instruction %s\n", line_num, word);
 }
