@@ -66,15 +66,16 @@ void rotr(stack_t **head)
 
 void rotl(stack_t **head)
 {
-	stack_t *last;
-	stack_t *temp;
+	stack_t *last, *temp;
 
 	if (!head || !(*head) || !(*head)->next)
 		return;
 
 	temp = *head;
-	last = temp;
-	while (temp->next)
-		temp = temp->next;
-	temp = last;
+	*head = (*head)->next;
+	last = *head;
+	while (last->next)
+		last = last->next;
+	last->next = temp;
+	temp->next = NULL;
 }
