@@ -60,7 +60,8 @@ void rotr(stack_t **head)
 		temp = temp->next;
 	first = temp->next;
 	temp->next = NULL;
-	push(head, first->n);
+	first->next = *head;
+	*head = first;
 }
 
 void rotl(stack_t **head)
